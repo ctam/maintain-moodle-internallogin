@@ -15,7 +15,7 @@ tag=$2
 curdir=$(pwd)
 cd $(dirname $0)
 
-# checkout Moodle tag 
+# checkout Moodle tag
 cd moodle/
 git checkout ${tag}
 cd ..
@@ -38,7 +38,12 @@ if [ "${lastoriginalcommit}" == "" ]; then
     exit 1
 fi
 git checkout -b ${upgradebranch} ${lastoriginalcommit}
-rm *.html *.php
+for f in *.{php,html}; do
+    if [ "${f%.*}" != "*" ]; then
+        rm $f
+    fi
+done
+if [ -d tests ]; then rm -Rf tests; fi
 cp -Rp ../moodle/login/* .
 git add .
 
