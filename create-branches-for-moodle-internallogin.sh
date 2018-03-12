@@ -1,14 +1,16 @@
 #!/bin/bash
 set -e
 
-for ver in {1..2}; do
+for ver in {1..3}; do
     version=v3.${ver}.0
     branch=MOODLE_3${ver}_STABLE
 
     cd moodle
+    git fetch --all
     git checkout $version
     cd ../moodle-internallogin/
-    if [ `git branch | grep $branch` ]; then
+    git fetch --all
+    if [ `git branch | grep ${branch}` ]; then
         echo "$branch already exists, skipping."
     else
         # check in the current version to master

@@ -17,12 +17,14 @@ cd $(dirname $0)
 
 # checkout Moodle tag
 cd moodle/
+git fetch --all --prune
 git checkout ${tag}
 cd ..
 
 # checkout moodle-internallogin
 upgradebranch=Moodle-${tag}
 cd moodle-internallogin/
+git fetch --all
 
 if [ "$(git status -s)" != "" ]; then
     echo "git status is dirty!"

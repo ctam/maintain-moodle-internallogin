@@ -32,7 +32,9 @@ for f in *.{php,html}; do
     fi
 done
 if [ "$1" == "--commit" ]; then
-	git commit -am"Replaced URLs that contain '/login/' with '/internallogin/' by running: for f in *.{php,html}; do sed -i '' 's|/login/|/internallogin/|g' \$f; done"
+    # git commit -am"Replaced URLs that contain '/login/' with '/internallogin/' by running: for f in *.{php,html}; do sed -i '' 's|/login/|/internallogin/|g' \$f; done"
+    # Make shorter comment.
+    git commit -am"Replaced URLs that contain '/login/' with '/internallogin/'."
 fi
 
 for f in *.{php,html}; do
