@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MIN_MOODLE_VERSION=27  # only work on MOODLE_XX_STABLE that is higher than MIN_MOODLE_VERSION
+MIN_MOODLE_VERSION=31  # only work on MOODLE_XX_STABLE that is on or higher than MIN_MOODLE_VERSION
 
 # Fetch/Refresh moodle repo
 if [ -d moodle ]; then
