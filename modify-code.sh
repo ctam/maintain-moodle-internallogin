@@ -8,7 +8,7 @@ if [[ $# > 1 ]]; then
         exit 1
 fi
 
-if [ "$0" == "--help" ]; then
+if [ "$1" == "--help" ]; then
 	echo "Usage: $0 [--help] [--commit]"
 fi
 
@@ -49,4 +49,10 @@ for f in *.{php,html}; do
 done
 if [ "$1" == "--commit" ]; then
 	git commit -am"Stopped alternateloginurl and corrected url returned by get_login_url()."
+fi
+
+# Skip cas login call
+sed -i '' "s|foreach(\$authsequence as \$authname) {|foreach(\$authsequence as \$authname) {  if ('cas' === \$authname) { continue; }|g" index.php
+if [ "$1" == "--commit" ]; then
+	git commit -am"Skip call to CAS's loginpage_hook()."
 fi

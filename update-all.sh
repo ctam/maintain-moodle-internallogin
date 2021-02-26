@@ -185,7 +185,7 @@ PUSH_PENDING_BRANCHES=($(echo ${PUSH_PENDING_BRANCHES[@]}|tr ' ' '\n'|sort -fu))
 
 echo "Run these git push commands in 'moodle-internallogin' directory when ready."
 for B in ${PUSH_PENDING_BRANCHES[@]}; do
-    echo "git push origin ${B}"
+    echo "git push -u origin ${B}"
 done
 
 cd -
